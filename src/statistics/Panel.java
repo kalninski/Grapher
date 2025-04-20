@@ -6,6 +6,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.geom.*;
 import java.util.*;
@@ -182,10 +183,13 @@ public class Panel extends JPanel implements MouseWheelListener,KeyListener, Mou
 			saveGraph=true;
 			isLooping = false;
 //			grid.drawAxisOnImage(img, g2d1, saveGraph, HEIGHT, WIDTH, HEIGHT);
-			saveCurrentGraph(folder, "!!!!!!!SaveGridAndGarph", ".png");
+			saveCurrentGraph(folder, "!!!!!!!SaveGrid", ".png");
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 
+		}
+		if(e.getKeyCode() == KeyEvent.VK_V) {
+			saveVectorOfFunction();
 		}
 		
 	}
@@ -342,7 +346,33 @@ public class Panel extends JPanel implements MouseWheelListener,KeyListener, Mou
 		}
 	}
 	
+	public void saveVectorOfFunction() {
+		StringBuilder svg = new StringBuilder("""
+	            <?xml version="1.0" encoding="UTF-8"?>
+	            <svg width="2000" height="2000" xmlns="http://www.w3.org/2000/svg">
 
+	            """);
+		String polyLine = """
+	              <polyline points="%s" stroke="black" fill="none" stroke-width="2"/>
+				""";
+		for(Function f : listOfFunctions) {
+			f.coordiantesForSVG();
+			String func = String.format(polyLine, f.coordinatesForSVG);
+			svg.append(func);
+		}
+		svg.append("</svg>");
+		String svgOut = svg.toString();
+		try {
+			System.out.println("SVG");
+			System.out.println(svg.toString());
+			FileWriter w = new FileWriter(folder + sep + "line7.svg");
+			w.write(svgOut);
+			w.close();
+
+		}catch(IOException ex) {
+			ex.printStackTrace();
+		}
+	}
 
 
 
