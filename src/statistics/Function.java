@@ -98,9 +98,9 @@ public class Function {
 	}
 	
 	public void coordiantesForSVG() {
-		StringBuilder str = new StringBuilder("M 500, 500  C ");
+		StringBuilder str = new StringBuilder("M " + xC[0] + ", " + yC[0] + "  C " + xC[1] + ", " + yC[1] + " ");
 		int size = xC.length;
-		for(int i = 0; i < size; i++) {
+		for(int i = 2; i < size; i++) {
 			str.append(xC[i] + ",");
 			str.append(yC[i] + " ");
 			coordinatesForSVG = str.toString();
