@@ -11,7 +11,7 @@ public class Function {
 	public double coeff1;
 	public double coeff2;
 	public boolean isVisable = true;
-	
+	String coordinatesForSVG;
 	public void setAppear(boolean isVisable) {
 		this.isVisable = isVisable;
 	}
@@ -59,5 +59,52 @@ public class Function {
 		int newY = 0;
 		
 		return newY;
+	}
+	
+	
+	public int[] multiplyArrays(int [] arr1, int[] arr2) {
+		int size = arr1.length;
+		for(int y = 0; y < size; y++) {
+			arr1[y] = arr1[y] * arr2[y];
+		}
+		return arr1;
+	}
+	
+	public int[] multiplyArrayByConstant(double constant, int[] arr) {
+		int size = arr.length;
+		for(int y = 0; y < size; y++) {
+			double val = (double) arr[y];
+			int result = (int) (val * constant);
+			arr[y] = result;
+		}
+		
+		return arr;
+	}
+	
+	public int[] addTwoArrays(int[] arr1, int[] arr2) {
+		int size = arr1.length;
+		for(int y = 0; y < size; y++) {
+			arr1[y] = arr1[y] + arr2[y];
+		}
+		return arr1;
+	}
+	
+	public int[] subtractTwoArrays(int[] arr1, int[] arr2) {
+		int size = arr1.length;
+		for(int y = 0; y < size; y++) {
+			arr1[y] = arr1[y] - arr2[y];
+		}
+		return arr1;
+	}
+	
+	public void coordiantesForSVG() {
+		StringBuilder str = new StringBuilder("M 500, 500  C ");
+		int size = xC.length;
+		for(int i = 0; i < size; i++) {
+			str.append(xC[i] + ",");
+			str.append(yC[i] + " ");
+			coordinatesForSVG = str.toString();
+		}
+		
 	}
 }
