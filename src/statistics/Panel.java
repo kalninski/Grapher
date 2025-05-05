@@ -183,7 +183,7 @@ public class Panel extends JPanel implements MouseWheelListener,KeyListener, Mou
 			saveGraph=true;
 			isLooping = false;
 //			grid.drawAxisOnImage(img, g2d1, saveGraph, HEIGHT, WIDTH, HEIGHT);
-			saveCurrentGraph(folder, "!!!!!!!SaveGrid", ".png");
+			saveCurrentGraph(folder, "SINE_GRAPH02.05.25", ".png");
 		}
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 
@@ -284,9 +284,9 @@ public class Panel extends JPanel implements MouseWheelListener,KeyListener, Mou
 				g2d1.setStroke(new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_BEVEL));
 				g2d1.setColor(new Color(50, 100, 150));
 				g2d1.drawPolyline(f.xC, f.yC, f.xC.length);
-//				System.out.println("y = "+  Arrays.toString(c.yC));
+				System.out.println("y = "+  Arrays.toString(f.yC));
 //				System.out.println(f.getClass() + " y = "+  Arrays.toString(f.yC) + Panel.dX);
-//				System.out.println("x = " + Arrays.toString(f.xC));
+				System.out.println("x = " + Arrays.toString(f.xC));
 				
 				g2d1.drawImage(img, null, 0, 0);
 				
@@ -353,7 +353,8 @@ public class Panel extends JPanel implements MouseWheelListener,KeyListener, Mou
 
 	            """);
 		String polyLine = """
-	              <polyline points="%s" stroke="black" fill="none" stroke-width="2"/>
+	              <path d=" %s" stroke="black" fill="none" stroke-width="2"/>
+
 				""";
 		for(Function f : listOfFunctions) {
 			f.coordiantesForSVG();
@@ -365,7 +366,7 @@ public class Panel extends JPanel implements MouseWheelListener,KeyListener, Mou
 		try {
 			System.out.println("SVG");
 			System.out.println(svg.toString());
-			FileWriter w = new FileWriter(folder + sep + "line7.svg");
+			FileWriter w = new FileWriter(folder + sep + "line11.svg");
 			w.write(svgOut);
 			w.close();
 

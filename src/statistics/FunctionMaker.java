@@ -59,7 +59,7 @@ public class FunctionMaker {
 				new Secant(1, 1);
 				break;
 			case POW:
-				new Pow(2);
+				new Pow(3);
 				break;
 		}
 		Panel.repaintAfterInputOfNewFunction = true;

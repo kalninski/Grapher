@@ -18,13 +18,15 @@ public class Tangent extends Function{
 	
 	@Override
 	public Function createValues() {
+		StringBuilder str = new StringBuilder();
 		int counter = 0;
 		for(int x = -Panel.WIDTH/2; x < Panel.WIDTH/2; x++) {
 //			System.out.println("x = " + x + "  dX = " + Panel.dX);
 			xC[counter] = counter;
-			yActualVal[counter] = 100 * (Panel.scaler) * coeff2 * Math.tan(((double)x) *coeff1/ (100  * (Panel.scaler)));
+			yActualVal[counter] = Panel.HEIGHT/2 - 100 * (Panel.scaler) * coeff2 * Math.tan(((double)x) *coeff1/ (100  * (Panel.scaler)));
+			xActualVal[counter] = (double) counter;
 			
-			int outputY = Panel.HEIGHT/2 - (int) (yActualVal[counter]);
+			int outputY = (int) (yActualVal[counter]);
 			if(outputY >= Panel.HEIGHT) {
 				outputY = Panel.HEIGHT;
 				System.out.println("x = " + x + "  for the output of y = " + yActualVal[counter] + " x as argument = " +  ((double)x) *coeff1/ (100  * (Panel.scaler)) + "  y coordinate = " + outputY);
@@ -34,11 +36,15 @@ public class Tangent extends Function{
 				System.out.println("x = " + x + "  for the output of y = " + yActualVal[counter] + " x as argument = " +  ((double)x) *coeff1/ (100  * (Panel.scaler)) + "  y coordinate = " + outputY);
 			}
 			yC[counter] = outputY;
+			str.append(counter + ",");
+			str.append(outputY + " ");
 
 			counter++;
 		}
+		
 		System.out.println(Arrays.toString(xC));
 		System.out.println(Arrays.toString(yActualVal));
+		System.out.println(str.toString());
 		System.out.println(Arrays.toString(yC));
 		return this;
 	}

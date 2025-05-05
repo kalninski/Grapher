@@ -8,6 +8,7 @@ public class Function {
 	public int[] xC = new int[Panel.WIDTH];
 	public int[] yC = new int[Panel.WIDTH];
 	public double[] yActualVal = new double[Panel.WIDTH];
+	public double[] xActualVal = new double[Panel.WIDTH];
 	public double coeff1;
 	public double coeff2;
 	public boolean isVisable = true;

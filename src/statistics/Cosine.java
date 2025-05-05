@@ -38,12 +38,13 @@ public class Cosine extends Function {
 	@Override
 	public Function createValues() {
 		int counter = 0;
-		for(int x = -Panel.WIDTH/2; x < Panel.WIDTH/2; x++) {
+		for(double x = -Panel.WIDTH/2; x < Panel.WIDTH/2; x++) {
 //			System.out.println("x = " + x + "  dX = " + Panel.dX);
 			xC[counter] = counter;
-			yActualVal[counter] = 100  * coeff2 * Math.cos(((double)x) *coeff1/ (100  * (Panel.scaler)));
+			yActualVal[counter] = Panel.HEIGHT/2 - (Panel.scaler) * 100  * coeff2 * Math.cos(x *coeff1/ (100  * (Panel.scaler)));
+			xActualVal[counter] = (double) counter;
 			
-			yC[counter] = Panel.HEIGHT/2 - (int) ((Panel.scaler) * yActualVal[counter]);
+			yC[counter] = (int) (yActualVal[counter]);
 	//		System.out.println("x = " + x + "  for the output of y = " + yActualVal[counter]);
 			counter++;
 		}

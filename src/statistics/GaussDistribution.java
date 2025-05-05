@@ -35,16 +35,16 @@ public class GaussDistribution extends Function {
 	public Function createValues() {
 		int counter = 0;
 		for(int x = -Panel.WIDTH/2; x < Panel.WIDTH/2; x++) {
-			int distributionVal = Panel.HEIGHT/2 -  (int)( gaussPDF(x));
-//			yActualVal[counter] = (gaussPDF(x , deviation , mean));
+			double distributionVal = Panel.HEIGHT/2 -  gaussPDF(x);
+
+			this.xActualVal[counter] = (double) counter;
+			this.yActualVal[counter] = distributionVal;
 			this.xC[counter] = counter;
-			this.yC[counter] = distributionVal;
-//			System.out.println( "Gaussian distribution Y = " + distributionVal + " double y = " +  gaussPDF(x) + "  scaler = " + Panel.scaler + "  dX = " + Panel.dX +  " x = " + x);
+			this.yC[counter] = (int) distributionVal;
+			
 			counter++;
 		}
-//		Panel.listOfFunctions.add(this);
-///		System.out.println( "Gaussian distribution X = " + Arrays.toString(xC));
-//		System.out.println( "Gaussian distribution Y = " + Arrays.toString(yC));
+
 		
 		return this;
 		
